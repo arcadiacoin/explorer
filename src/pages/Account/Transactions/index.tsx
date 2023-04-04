@@ -17,7 +17,7 @@ import { CheckCircleOutlined, SyncOutlined } from "@ant-design/icons";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TimeAgo from "timeago-react";
 import BigNumber from "bignumber.js";
-import { rawToRai, toBoolean } from "components/utils";
+import { rawToAdia, toBoolean } from "components/utils";
 import { Colors, TwoToneColors } from "components/utils";
 import { Natricon } from "components/Preferences/Natricons/Natricon";
 import { KnownAccountsContext } from "api/contexts/KnownAccounts";
@@ -101,7 +101,7 @@ const TransactionsTable = ({
           <Col xs={0} lg={5}>
             {t("transaction.amount")}
             {sumAmount
-              ? ` (Ӿ ${new BigNumber(rawToRai(sumAmount)).toFormat()})`
+              ? ` (⍲ ${new BigNumber(rawToAdia(sumAmount)).toFormat()})`
               : null}
           </Col>
           <Col xs={0} lg={3} style={{ textAlign: "right" }}>
@@ -239,7 +239,7 @@ const TransactionsTable = ({
                         ? t("common.notAvailable")
                         : ""}
                       {amount && amount !== "0"
-                        ? `Ӿ ${new BigNumber(rawToRai(amount)).toFormat()}`
+                        ? `⍲ ${new BigNumber(rawToAdia(amount)).toFormat()}`
                         : ""}
                     </Text>
                   </Col>

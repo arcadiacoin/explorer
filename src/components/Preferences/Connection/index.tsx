@@ -96,7 +96,7 @@ const ConnectionPreferences: React.FC<Props> = ({ isDetailed }) => {
                           {...field}
                           type="text"
                           style={{ width: "400px", maxWidth: "100%" }}
-                          placeholder={`http://127.0.0.1:7076`}
+                          placeholder={`http://127.0.0.1:7046`}
                           maxLength={255}
                           suffix={
                             getValues("rpcDomain") && !errors?.rpcDomain ? (
@@ -126,7 +126,7 @@ const ConnectionPreferences: React.FC<Props> = ({ isDetailed }) => {
                           {...field}
                           type="text"
                           style={{ width: "400px", maxWidth: "100%" }}
-                          placeholder={`wss://www.nanolooker.com/ws`}
+                          placeholder={`wss://ws3.arcadiacoin.net`}
                           maxLength={255}
                           suffix={
                             getValues("websocketDomain") &&

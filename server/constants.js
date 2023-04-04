@@ -47,15 +47,15 @@ const REPRESENTATIVE = "REPRESENTATIVE";
 const REDIS_RICH_LIST = "RICH_LIST";
 const PARTICIPANTS = "PARTICIPANTS";
 const NANOTICKER_STATS = "NANOTICKER_STATS";
-const NANOBROWSERQUEST_PLAYERS = "NANOBROWSERQUEST_PLAYERS";
-const NANOBROWSERQUEST_LEADERBOARD = "NANOBROWSERQUEST_LEADERBOARD";
 const YOUTUBE_PLAYLIST = "YOUTUBE_PLAYLIST";
+const WS_DOMAIN_URL = "wss://ws3.arcadiacoin.net";
+const REP_ALIAS_URL = "https://arcnodes.arcadiacoin.net/api/accounts/aliases";
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_URL = MONGO_USER
   ? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@localhost:27017`
   : `mongodb://localhost:27017`;
-const MONGO_DB = "nanolooker";
+const MONGO_DB = "arcadiaexplorer";
 const MONGO_OPTIONS = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -113,8 +113,6 @@ module.exports = {
   REDIS_RICH_LIST,
   PARTICIPANTS,
   NANOTICKER_STATS,
-  NANOBROWSERQUEST_PLAYERS,
-  NANOBROWSERQUEST_LEADERBOARD,
   YOUTUBE_PLAYLIST,
   MONGO_URL,
   MONGO_DB,
@@ -122,4 +120,5 @@ module.exports = {
   SUPPORTED_CRYPTOCURRENCY,
   TRANSACTION_COLLECTION,
   ACCOUNT_TRANSACTION_COLLECTION,
+  WS_DOMAIN_URL
 };

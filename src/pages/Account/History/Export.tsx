@@ -14,7 +14,7 @@ import {
 import pick from "lodash/pick";
 
 import { AccountHistoryFilterContext } from "api/contexts/AccountHistoryFilter";
-import { rawToRai } from "components/utils";
+import { rawToAdia } from "components/utils";
 
 const { Text } = Typography;
 const { Option } = Select;
@@ -64,7 +64,7 @@ const Export: React.FC = () => {
         Object.entries(pick(history, header))
           .map(([key, value]) => {
             if (key === "amount" && value) {
-              return rawToRai(value);
+              return rawToAdia(value);
             }
             return value;
           })

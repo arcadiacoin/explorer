@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import BigNumber from "bignumber.js";
 import useAccountHistory from "api/hooks/use-account-history";
 import { AccountInfoContext } from "api/contexts/AccountInfo";
-import { rawToRai, intToString } from "components/utils";
+import { rawToAdia, intToString } from "components/utils";
 import QuestionCircle from "components/QuestionCircle";
 
 const { Option } = Select;
@@ -92,7 +92,7 @@ const Chart: React.FC = () => {
           dailyData[currentDate] = currentBalance;
 
           transactionData.push({
-            balance: rawToRai(currentBalance),
+            balance: rawToAdia(currentBalance),
             date: `${localTimestamp * 1001}`,
           });
         }
@@ -109,7 +109,7 @@ const Chart: React.FC = () => {
         dailyData[date] = currentBalance;
 
         transactionData.push({
-          balance: rawToRai(currentBalance),
+          balance: rawToAdia(currentBalance),
           date: `${localTimestamp * 1000}`,
         });
       }
@@ -119,7 +119,7 @@ const Chart: React.FC = () => {
       Object.entries(dailyData)
         .map(([date, rawBalance]) => {
           // @NOTE: It may happen that the last date doesn't have all tx due to the TRANSACTIONS_PER_PAGE limit
-          let balance = rawToRai(rawBalance);
+          let balance = rawToAdia(rawBalance);
           if (balance < 0) {
             balance = 0;
           }
@@ -160,7 +160,7 @@ const Chart: React.FC = () => {
         formatter: ({ balance, date }: { balance: number; date: string }) => {
           return {
             name: t("common.balance"),
-            value: `Ӿ ${new BigNumber(balance).toFormat(6)}`,
+            value: `⍲ ${new BigNumber(balance).toFormat(6)}`,
           };
         },
       },

@@ -55,12 +55,6 @@ interface Preferences {
   setDisableLiveTransactions: Function;
   natricons: boolean;
   setNatricons: Function;
-  nanoQuakeJSUsername: null | string;
-  setNanoQuakeJSUsername: Function;
-  nanoQuakeJSAccount: null | string;
-  setNanoQuakeJSAccount: Function;
-  nanoQuakeJSServer: null | string;
-  setNanoQuakeJSServer: Function;
   rpcDomain: null | string;
   setRpcDomain: Function;
   websocketDomain: null | string;
@@ -77,9 +71,6 @@ export enum LOCALSTORAGE_KEYS {
   NATRICONS = "NATRICONS",
   LANGUAGE = "LANGUAGE",
   BOOKMARKS = "BOOKMARKS",
-  NANOQUAKEJS_USERNAME = "NANOQUAKEJS_USERNAME",
-  NANOQUAKEJS_ACCOUNT = "NANOQUAKEJS_ACCOUNT",
-  NANOQUAKEJS_SERVER = "NANOQUAKEJS_SERVER",
   RPC_DOMAIN = "RPC_DOMAIN",
   WEBSOCKET_DOMAIN = "WEBSOCKET_DOMAIN",
 }
@@ -125,9 +116,6 @@ export const PreferencesContext = React.createContext<Preferences>({
   filterTransactionsRange: DEFAULT_UNITS,
   disableLiveTransactions: false,
   natricons: false,
-  nanoQuakeJSUsername: null,
-  nanoQuakeJSAccount: null,
-  nanoQuakeJSServer: null,
   rpcDomain: null,
   websocketDomain: null,
   setTheme: () => {},
@@ -139,9 +127,6 @@ export const PreferencesContext = React.createContext<Preferences>({
   setFilterTransactionsRange: () => {},
   setDisableLiveTransactions: () => {},
   setNatricons: () => {},
-  setNanoQuakeJSUsername: () => {},
-  setNanoQuakeJSAccount: () => {},
-  setNanoQuakeJSServer: () => {},
   setRpcDomain: () => {},
   setWebsocketDomain: () => {},
 });
@@ -172,15 +157,6 @@ const Provider: React.FC = ({ children }) => {
   );
   const [natricons, setNatricons] = React.useState<boolean>(
     toBoolean(localStorage.getItem(LOCALSTORAGE_KEYS.NATRICONS)),
-  );
-  const [nanoQuakeJSUsername, setNanoQuakeJSUsername] = React.useState(
-    localStorage.getItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_USERNAME),
-  );
-  const [nanoQuakeJSAccount, setNanoQuakeJSAccount] = React.useState(
-    localStorage.getItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_ACCOUNT),
-  );
-  const [nanoQuakeJSServer, setNanoQuakeJSServer] = React.useState(
-    localStorage.getItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_SERVER),
   );
   const [rpcDomain, setRpcDomain] = React.useState(
     localStorage.getItem(LOCALSTORAGE_KEYS.RPC_DOMAIN) || "",
@@ -267,21 +243,6 @@ const Provider: React.FC = ({ children }) => {
     setNatricons(newValue);
   };
 
-  const setLocalstorageNanoQuakeJSUsername = (newValue: string) => {
-    localStorage.setItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_USERNAME, `${newValue}`);
-    setNanoQuakeJSUsername(newValue);
-  };
-
-  const setLocalstorageNanoQuakeJSAccount = (newValue: string) => {
-    localStorage.setItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_ACCOUNT, `${newValue}`);
-    setNanoQuakeJSAccount(newValue);
-  };
-
-  const setLocalstorageNanoQuakeJSServer = (newValue: string) => {
-    localStorage.setItem(LOCALSTORAGE_KEYS.NANOQUAKEJS_SERVER, `${newValue}`);
-    setNanoQuakeJSServer(newValue);
-  };
-
   const setLocalstorageRpcDomain = (newValue: string) => {
     localStorage.setItem(LOCALSTORAGE_KEYS.RPC_DOMAIN, `${newValue}`);
     setRpcDomain(newValue);
@@ -302,9 +263,6 @@ const Provider: React.FC = ({ children }) => {
         filterTransactionsRange,
         disableLiveTransactions,
         natricons,
-        nanoQuakeJSUsername,
-        nanoQuakeJSAccount,
-        nanoQuakeJSServer,
         rpcDomain,
         websocketDomain,
         setTheme: setLocalstorageTheme,
@@ -316,9 +274,6 @@ const Provider: React.FC = ({ children }) => {
         setFilterTransactionsRange: setLocalstorageFilterTransactionsRange,
         setDisableLiveTransactions: setLocalstorageDisableLiveTransactions,
         setNatricons: setLocalstorageNatricons,
-        setNanoQuakeJSUsername: setLocalstorageNanoQuakeJSUsername,
-        setNanoQuakeJSAccount: setLocalstorageNanoQuakeJSAccount,
-        setNanoQuakeJSServer: setLocalstorageNanoQuakeJSServer,
         setRpcDomain: setLocalstorageRpcDomain,
         setWebsocketDomain: setLocalstorageWebsocketDomain,
       }}

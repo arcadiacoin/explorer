@@ -15,22 +15,14 @@ import DeveloperFundPage from "pages/DeveloperFund";
 import DeveloperFundTransactionsPage from "pages/DeveloperFund/Transactions";
 import DistributionPage from "pages/Distribution";
 import ExchangeTrackerPage from "pages/ExchangeTracker";
-import FaucetsPage from "pages/Faucets";
 import LargeTransactionsPage from "pages/LargeTransactions";
 import KnownAccountsPage from "pages/KnownAccounts";
 import AccountPage from "pages/Account";
 import BlockPage from "pages/Block";
-import NewsPage from "pages/News";
 import NodeStatusPage from "pages/NodeStatus";
 import NetworkStatusPage from "pages/NetworkStatus";
-import WhatIsNanoPage from "pages/WhatIsNano";
 import PreferencesPage from "pages/Preferences";
 import BookmarksPage from "pages/Bookmarks";
-import NanoQuakeJSPage from "pages/NanoQuakeJS";
-import NanoBrowserQuestPage from "pages/NanoBrowserQuest";
-import TreasureHunt from "pages/TreasureHunt";
-import StatisticsSocial from "pages/Statistics/Social";
-import Statistics2Miners from "pages/Statistics/2Miners";
 import "components/utils/analytics";
 
 import "antd/dist/antd.css";
@@ -49,10 +41,10 @@ const App: React.FC = () => {
     <>
       <Helmet>
         <html lang={i18next.language} />
-        <title>NanoLooker {t("common.blockExplorer")}</title>
+        <title>Arcadia {t("common.blockExplorer")}</title>
         <meta
           name="description"
-          content="Block explorer of the Nano cryptocurrency"
+          content="Block explorer of the Arcadia cryptocurrency"
         />
         <meta
           name="theme-color"
@@ -78,7 +70,6 @@ const App: React.FC = () => {
             <Route path="/known-accounts" component={KnownAccountsPage} />
             <Route path="/distribution" component={DistributionPage} />
             <Route path="/exchange-tracker" component={ExchangeTrackerPage} />
-            <Route path="/faucets" component={FaucetsPage} />
             <Route
               path="/large-transactions/:sortBy?"
               component={LargeTransactionsPage}
@@ -88,20 +79,10 @@ const App: React.FC = () => {
               component={AccountPage}
             />
             <Route path="/block/:block?" component={BlockPage} />
-            <Route path="/news/:feed?" component={NewsPage} />
             <Route path="/node-status" component={NodeStatusPage} />
             <Route path="/network-status" component={NetworkStatusPage} />
-            <Route path="/what-is-nano" component={WhatIsNanoPage} />
             <Route path="/preferences" component={PreferencesPage} />
             <Route path="/bookmarks" component={BookmarksPage} />
-            <Route path="/nanoquakejs" component={NanoQuakeJSPage} />
-            <Route
-              path="/nanobrowserquest/:section?"
-              component={NanoBrowserQuestPage}
-            />
-            <Route path="/treasure-hunt/:account?" component={TreasureHunt} />
-            <Route path="/statistics/social" component={StatisticsSocial} />
-            <Route path="/statistics/2miners" component={Statistics2Miners} />
           </Switch>
         </Content>
         <AppFooter />

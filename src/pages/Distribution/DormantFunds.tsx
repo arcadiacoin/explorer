@@ -93,16 +93,16 @@ const DormantFunds: React.FC<Props> = ({ data }) => {
             <ul style={{ margin: "12px 0" }}>
               <li>
                 {t("pages.distribution.availableSupply")}:{" "}
-                <strong>Ӿ {new BigNumber(availableSupply).toFormat()}</strong>
+                <strong>⍲ {new BigNumber(availableSupply).toFormat()}</strong>
               </li>
               <li>
                 {t("pages.distribution.knownAccountBalances")}:{" "}
-                <strong>Ӿ {new BigNumber(totalFunds).toFormat()}</strong>
+                <strong>⍲ {new BigNumber(totalFunds).toFormat()}</strong>
               </li>
               <li>
                 {t("pages.distribution.unknownDormantFunds")}:{" "}
                 <strong>
-                  Ӿ {new BigNumber(unknownDormantFunds).toFormat()}
+                  ⍲ {new BigNumber(unknownDormantFunds).toFormat()}
                 </strong>
               </li>
             </ul>
@@ -144,7 +144,7 @@ const DormantFunds: React.FC<Props> = ({ data }) => {
                 <div style={{ fontSize: "12px" }}>
                   <div>
                     <strong>{new BigNumber(totalDormant).toFormat(5)}</strong>{" "}
-                    {t("pages.distribution.dormantNano")}
+                    {t("pages.distribution.dormantArcadia")}
                   </div>
                   <div>
                     <strong>{percentAvailableSupply}%</strong>{" "}

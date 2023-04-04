@@ -21,7 +21,7 @@ const {
   LARGE_TRANSACTIONS,
   CONFIRMATIONS_PER_SECOND,
 } = require("../constants");
-const { rawToRai } = require("../utils");
+const { rawToAdia } = require("../utils");
 
 let db;
 let mongoClient;
@@ -149,7 +149,7 @@ cron.schedule("*/10 * * * * *", async () => {
         { $group: { _id: null, totalVolume: { $sum: "$value" } } },
       ])
       .toArray((_err, [{ totalVolume = 0 } = {}] = []) => {
-        nodeCache.set(TOTAL_VOLUME_24H, rawToRai(totalVolume));
+        nodeCache.set(TOTAL_VOLUME_24H, rawToAdia(totalVolume));
       });
 
     db.collection(TOTAL_VOLUME_COLLECTION)
@@ -164,7 +164,7 @@ cron.schedule("*/10 * * * * *", async () => {
         { $group: { _id: null, totalVolume: { $sum: "$value" } } },
       ])
       .toArray((_err, [{ totalVolume = 0 } = {}] = []) => {
-        nodeCache.set(TOTAL_VOLUME_48H, rawToRai(totalVolume));
+        nodeCache.set(TOTAL_VOLUME_48H, rawToAdia(totalVolume));
       });
   } catch (err) {
     console.log("Error", err);

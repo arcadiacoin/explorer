@@ -11,10 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-@font-face {
-  font-family: "GraphicPixel";
-  src: url("../public/nanobrowserquest/graphicpixel.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}

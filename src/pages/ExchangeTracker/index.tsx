@@ -221,7 +221,7 @@ const ExchangeTrackerPage: React.FC = () => {
       yAxis: {
         label: {
           formatter: (value: string) =>
-            `${new BigNumber(value).dividedBy(1000000).toFormat()}M`,
+            `${new BigNumber(value).dividedBy(1000).toFormat()}K`,
         },
       },
       legend: {
@@ -252,7 +252,7 @@ const ExchangeTrackerPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Nano {t("menu.exchangeTracker")}</title>
+        <title>Arcadia {t("menu.exchangeTracker")}</title>
       </Helmet>
       <Title level={3}>{t("menu.exchangeTracker")}</Title>
 
@@ -318,7 +318,7 @@ const ExchangeTrackerPage: React.FC = () => {
 
         <LoadingStatistic
           title={t("pages.exchangeTracker.totalSelected")}
-          prefix="Ӿ"
+          prefix="⍲"
           value={totalExchangeBalance}
           isLoading={!exchangeBalances}
         />

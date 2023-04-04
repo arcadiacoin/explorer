@@ -9,7 +9,7 @@ const {
   TRANSACTION_COLLECTION,
 } = require("../constants");
 const { getKnownAccounts } = require("./knownAccounts");
-const { isValidAccountAddress, raiToRaw, toBoolean } = require("../utils");
+const { isValidAccountAddress, adiaToRaw, toBoolean } = require("../utils");
 
 let db;
 let mongoClient;
@@ -169,10 +169,10 @@ const getHistoryFilters = async ({ account, filters: rawFilters }) => {
           ? {
               amount: {
                 ...(filters.minAmount
-                  ? { $gte: raiToRaw(filters.minAmount) }
+                  ? { $gte: adiaToRaw(filters.minAmount) }
                   : null),
                 ...(filters.maxAmount
-                  ? { $lte: raiToRaw(filters.maxAmount) }
+                  ? { $lte: adiaToRaw(filters.maxAmount) }
                   : null),
               },
             }

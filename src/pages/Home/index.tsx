@@ -129,11 +129,6 @@ const HomePage = () => {
           <Card
             size="small"
             title={t("pages.home.network")}
-            extra={
-              <Link to="/statistics/social">
-                {t("pages.home.viewSocialEngagement")}
-              </Link>
-            }
           >
             <Row gutter={6}>
               <Col xs={24} sm={12}>
@@ -258,7 +253,7 @@ const HomePage = () => {
             </Row>
           </Card>
         </Col>
-
+{/* 
         <Col
           xs={{ span: 24, order: 1 }}
           md={{ span: 12, order: 3 }}
@@ -312,7 +307,7 @@ const HomePage = () => {
               </Col>
             </Row>
           </Card>
-        </Col>
+</Col> */}
       </Row>
       <RecentTransactions />
     </>

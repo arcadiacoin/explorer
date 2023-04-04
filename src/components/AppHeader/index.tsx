@@ -49,7 +49,7 @@ const AppHeader: React.FC = () => {
             }}
           >
             <Link to="/" style={{ whiteSpace: "nowrap", marginRight: "10px" }}>
-              NanoLooker
+              Arcadia Explorer
             </Link>
           </Col>
           <Col xs={{ span: 24, order: 3 }} md={{ span: 12, order: 2 }}>
@@ -91,17 +91,7 @@ const AppHeader: React.FC = () => {
                   {t("menu.exchangeTracker")}
                   <Link to="/exchange-tracker" />
                 </Menu.Item>
-                <Menu.Item key="faucets">
-                  {t("menu.faucets")}
-                  <Link to="/faucets" />
-                </Menu.Item>
               </SubMenu>
-
-              <Menu.Item key="news">
-                <CalendarOutlined />
-                {t("menu.news")}
-                <Link to="/news" />
-              </Menu.Item>
 
               <SubMenu
                 key="status-submenu"

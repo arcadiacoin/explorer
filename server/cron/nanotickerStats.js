@@ -21,5 +21,5 @@ const getNanotickerStats = async () => {
 
 // Every 3 seconds
 cron.schedule("*/3 * * * * *", async () => {
-  getNanotickerStats();
+  //getNanotickerStats();
 });

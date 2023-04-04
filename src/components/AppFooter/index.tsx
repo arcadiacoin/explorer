@@ -10,7 +10,7 @@ const { Text } = Typography;
 const { Footer } = Layout;
 
 export const DONATION_ACCOUNT =
-  "nano_1gxx3dbrprrh9ycf1p5wo9qgmftppg6z7688njum14aybjkaiweqmwpuu9py";
+  "aida_1gxx3dbrprrh9ycf1p5wo9qgmftppg6z7688njum14aybjkaiweqmwpuu9py";
 
 const AppFooter: React.FC = () => {
   const { t } = useTranslation();
@@ -23,28 +23,14 @@ const AppFooter: React.FC = () => {
     <Footer style={{ textAlign: "center" }}>
       <div>
         <a
-          href="https://github.com/running-coder/nanolooker"
+          href="https://github.com/arcadiacoin/explorer"
           rel="noopener noreferrer"
           target="_blank"
         >
-          <GithubOutlined /> NanoLooker
+          <GithubOutlined /> Arcadia Explorer
         </a>{" "}
         ©{new Date().getFullYear()}{" "}
-        {t("footer.createdBy", { creator: "RunningCoder" })}
       </div>
-
-      <QRCodeModal
-        account={DONATION_ACCOUNT}
-        header={<Text>{t("footer.donations.title")}</Text>}
-      >
-        <Tag
-          color={donateColor}
-          icon={<HeartTwoTone twoToneColor={donateColor} />}
-          style={{ cursor: "pointer", marginTop: "6px" }}
-        >
-          {t("footer.donations.donate")}
-        </Tag>
-      </QRCodeModal>
     </Footer>
   );
 };

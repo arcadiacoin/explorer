@@ -6,7 +6,7 @@ export interface UseUptimeReturn {
 
 let confirmationsPerSecondTimeout: number | undefined;
 
-const useNanoTicker = (): UseUptimeReturn => {
+const useArcadiaTicker = (): UseUptimeReturn => {
   const [confirmationsPerSecond, setConfirmationsPerSecond] = React.useState<
     number | undefined
   >();
@@ -49,4 +49,4 @@ const useNanoTicker = (): UseUptimeReturn => {
   return { confirmationsPerSecond };
 };
 
-export default useNanoTicker;
+export default useArcadiaTicker;

@@ -22,7 +22,7 @@ import {
 import { ConfirmationQuorumContext } from "api/contexts/ConfirmationQuorum";
 import LoadingStatistic from "components/LoadingStatistic";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai, timestampToDate, TwoToneColors } from "components/utils";
+import { rawToAdia, timestampToDate, TwoToneColors } from "components/utils";
 import AccountHeader from "../Header";
 import ExtraRow from "./ExtraRow";
 import Chart from "../Chart";
@@ -96,7 +96,7 @@ const AccountDetails: React.FC<Props> = ({
     },
   } = React.useContext(ConfirmationQuorumContext);
 
-  let balance = new BigNumber(rawToRai(accountInfo?.balance || 0))
+  let balance = new BigNumber(rawToAdia(accountInfo?.balance || 0))
     .plus(socketBalance)
     .toNumber();
 
@@ -105,7 +105,7 @@ const AccountDetails: React.FC<Props> = ({
     balance = 0;
   }
 
-  const balancePending = new BigNumber(rawToRai(accountInfo?.pending || 0))
+  const balancePending = new BigNumber(rawToAdia(accountInfo?.pending || 0))
     .plus(socketPendingBalance)
     .toFormat(8);
 
@@ -154,7 +154,7 @@ const AccountDetails: React.FC<Props> = ({
 
   const votingWeight = new BigNumber(representativeAccount.weight)
     .times(100)
-    .dividedBy(rawToRai(onlineStakeTotal))
+    .dividedBy(rawToAdia(onlineStakeTotal))
     .toNumber();
 
   return (
@@ -174,7 +174,7 @@ const AccountDetails: React.FC<Props> = ({
               <Col xs={24} sm={18} md={20}>
                 <LoadingStatistic
                   isLoading={skeletonProps.loading}
-                  prefix="Ӿ"
+                  prefix="⍲"
                   value={
                     balance >= 1 ? balance : new BigNumber(balance).toFormat()
                   }
@@ -319,7 +319,7 @@ const AccountDetails: React.FC<Props> = ({
                   </Tooltip>
                 </Col>
                 <Col xs={24} sm={18} md={20}>
-                  <Skeleton {...skeletonProps}>Ӿ {balancePending}</Skeleton>
+                  <Skeleton {...skeletonProps}>⍲ {balancePending}</Skeleton>
                 </Col>
               </Row>
             ) : null}

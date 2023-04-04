@@ -272,7 +272,7 @@
   {
     "id": "nano",
     "symbol": "nano",
-    "name": "Nano"
+    "name": "Arcadia"
   },
   {
     "id": "kyber-network",
@@ -1008,5 +1008,10 @@
     "id": "banano",
     "symbol": "ban",
     "name": "Banano"
+  },
+  {
+    "id": "paw",
+    "symbol": "adia",
+    "name": "Arcadia"
   }
 ]

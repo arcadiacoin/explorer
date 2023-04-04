@@ -15,7 +15,7 @@
     "eject": "react-scripts eject",
     "translate": "node scripts/translate.js"
   },
-  "proxy": "http://localhost:3010",
+  "proxy": "http://127.0.0.1:3015",
   "browserslist": {
     "production": [
       ">0.2%",

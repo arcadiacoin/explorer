@@ -7,7 +7,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TimeAgo from "timeago-react";
 import BigNumber from "bignumber.js";
 import { Colors, TwoToneColors } from "components/utils";
-import { rawToRai } from "components/utils";
+import { rawToAdia } from "components/utils";
 import { Theme, PreferencesContext } from "api/contexts/Preferences";
 import { Transaction } from "types/transaction";
 
@@ -60,7 +60,7 @@ const RecentTransactions: React.FC<Props> = ({ recentTransactions }) => {
                 {subtype !== "change" ? (
                   <Text style={{ color }} className="timeline-amount">
                     {amount
-                      ? `Ӿ ${new BigNumber(rawToRai(amount)).toFormat()}`
+                      ? `⍲ ${new BigNumber(rawToAdia(amount)).toFormat()}`
                       : t("common.notAvailable")}
                   </Text>
                 ) : null}

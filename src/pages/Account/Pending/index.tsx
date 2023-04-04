@@ -26,9 +26,9 @@ interface PendingHistoryBlock extends PendingBlock {
   local_timestamp: String;
 }
 
-// 0.000001 Nano
+// 0.000001 Arcadia
 const PENDING_MIN_THRESHOLD = new BigNumber(1e24).toFixed();
-// 0.001 Nano
+// 0.001 Arcadia
 const PENDING_MIN_EXCHANGE_THRESHOLD = new BigNumber(1e27).toFixed();
 
 interface Props {
@@ -116,7 +116,7 @@ const AccountPendingHistory: React.FC<Props> = ({
   }, [blocks, start]);
 
   // const accountPending = accountInfo?.pending
-  //   ? new BigNumber(rawToRai(accountInfo?.pending)).toNumber()
+  //   ? new BigNumber(rawToAdia(accountInfo?.pending)).toNumber()
   //   : 0;
 
   // return accountPending > PENDING_MIN_THRESHOLD ? (

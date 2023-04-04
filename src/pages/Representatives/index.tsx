@@ -22,7 +22,7 @@ import {
 import { ConfirmationQuorumContext } from "api/contexts/ConfirmationQuorum";
 import { DelegatorsContext } from "api/contexts/Delegators";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai, TwoToneColors } from "components/utils";
+import { rawToAdia, TwoToneColors } from "components/utils";
 import PieChart from "./PieChart";
 import useRepresentative from "api/hooks/use-representative";
 
@@ -76,7 +76,7 @@ const Representatives = () => {
   };
 
   const stake = new BigNumber(
-    rawToRai(
+    rawToAdia(
       !isIncludeOfflineRepresentatives ? onlineStakeTotal : peersStakeTotal,
     ),
   ).toNumber();
@@ -103,7 +103,7 @@ const Representatives = () => {
   return (
     <>
       <Helmet>
-        <title>Nano {t("menu.representatives")}</title>
+        <title>Arcadia {t("menu.representatives")}</title>
       </Helmet>
       <Row gutter={[12, 0]}>
         <Col xs={24} md={12}>
@@ -210,7 +210,7 @@ const Representatives = () => {
               </Col>
               <Col xs={24} sm={16}>
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  Ӿ {new BigNumber(principalRepresentativeMinWeight).toFormat()}
+                  ⍲ {new BigNumber(principalRepresentativeMinWeight).toFormat()}
                 </Skeleton>
               </Col>
             </Row>
@@ -231,7 +231,7 @@ const Representatives = () => {
               <Col xs={24} sm={16}>
                 {" "}
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  Ӿ {new BigNumber(rawToRai(onlineWeightMinimum)).toFormat()}
+                  ⍲ {new BigNumber(rawToAdia(onlineWeightMinimum)).toFormat()}
                 </Skeleton>
               </Col>
             </Row>
@@ -241,7 +241,7 @@ const Representatives = () => {
               </Col>
               <Col xs={24} sm={16}>
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  Ӿ {new BigNumber(rawToRai(onlineStakeTotal)).toFormat(0)}
+                  ⍲ {new BigNumber(rawToAdia(onlineStakeTotal)).toFormat(0)}
                 </Skeleton>
               </Col>
             </Row>
@@ -251,7 +251,7 @@ const Representatives = () => {
               </Col>
               <Col xs={24} sm={16}>
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  Ӿ {new BigNumber(rawToRai(peersStakeTotal)).toFormat(0)}
+                  ⍲ {new BigNumber(rawToAdia(peersStakeTotal)).toFormat(0)}
                 </Skeleton>
               </Col>
             </Row>
@@ -331,7 +331,7 @@ const Representatives = () => {
                           display: "block",
                         }}
                       >
-                        Ӿ {weight}
+                        ⍲ {weight}
                       </span>
 
                       {isPrincipal ? (

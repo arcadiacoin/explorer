@@ -18,7 +18,7 @@ import { BlocksInfoContext } from "api/contexts/BlocksInfo";
 import {
   toBoolean,
   TwoToneColors,
-  rawToRai,
+  rawToAdia,
   timestampToDate,
   isValidAccountAddress,
   isValidBlockHash,
@@ -72,7 +72,7 @@ const BlockDetails: React.FC = () => {
 
   const modifiedTimestamp = Number(blockInfo?.local_timestamp) * 1000;
   const btcCurrentPrice = priceStats?.bitcoin?.[fiat] || 0;
-  const amount = new BigNumber(rawToRai(blockInfo?.amount || 0)).toNumber();
+  const amount = new BigNumber(rawToAdia(blockInfo?.amount || 0)).toNumber();
   const fiatAmount = new BigNumber(amount)
     .times(currentPrice)
     .toFormat(CurrencyDecimal?.[fiat]);
@@ -83,7 +83,7 @@ const BlockDetails: React.FC = () => {
         .toFormat(12)
     : null;
 
-  const balance = new BigNumber(rawToRai(blockInfo?.balance || 0)).toNumber();
+  const balance = new BigNumber(rawToAdia(blockInfo?.balance || 0)).toNumber();
   const fiatBalance = new BigNumber(balance)
     .times(currentPrice)
     .toFormat(CurrencyDecimal?.[fiat]);
@@ -205,7 +205,7 @@ const BlockDetails: React.FC = () => {
               <Col xs={24} sm={18} xl={20}>
                 <LoadingStatistic
                   isLoading={skeletonProps.loading}
-                  prefix="Ӿ"
+                  prefix="⍲"
                   value={
                     amount >= 1 ? amount : new BigNumber(amount).toFormat()
                   }
@@ -232,7 +232,7 @@ const BlockDetails: React.FC = () => {
                   {...skeletonProps}
                   title={{ width: isSmallAndLower ? "100%" : "33%" }}
                 >
-                  Ӿ {new BigNumber(balance).toFormat()}
+                  ⍲ {new BigNumber(balance).toFormat()}
                   <br />
                 </Skeleton>
                 <Skeleton

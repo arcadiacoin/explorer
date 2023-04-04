@@ -1,14 +1,14 @@
 const sortBy = require("lodash/sortBy");
 const reverse = require("lodash/reverse");
-const { rawToRai } = require("../../utils");
+const { rawToAdia } = require("../../utils");
 
 const representativesTransformer = json => {
   json.representatives = reverse(
     sortBy(
       Object.entries(json.representatives).reduce(
         (acc = {}, [account, weight]) => {
-          const weightAsNumber = Number(weight) && rawToRai(weight);
-          if (weightAsNumber > 1000) {
+          const weightAsNumber = Number(weight) && rawToAdia(weight);
+          if (weightAsNumber > 0.1) {
             acc.push({
               account,
               weight: weightAsNumber,

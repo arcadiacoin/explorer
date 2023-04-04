@@ -10,8 +10,6 @@ require("./cron/ws");
 require("./cron/coingeckoStats");
 require("./cron/btcTransactionFees");
 require("./cron/nanotickerStats");
-require("./cron/nanobrowserquestStats");
-require("./cron/2minersStats");
 require("./cron/youtubePlaylist");
 require("./ws");
 const { getDistributionData } = require("./cron/distribution");
@@ -30,8 +28,6 @@ const {
   TOTAL_VOLUME_48H,
   CONFIRMATIONS_PER_SECOND,
   NANOTICKER_STATS,
-  NANOBROWSERQUEST_PLAYERS,
-  NANOBROWSERQUEST_LEADERBOARD,
 } = require("./constants");
 const {
   getBtcTransactionFees,
@@ -43,7 +39,6 @@ const {
   getCoingeckoStats,
   getCoingeckoMarketCapStats,
 } = require("./api/coingeckoStats");
-const { get2MinersStats } = require("./api/2minersStats");
 const {
   getDeveloperFundTransactions,
 } = require("./api/developerFundTransactions");
@@ -177,18 +172,6 @@ app.get("/api/market-statistics", async (req, res) => {
   });
 });
 
-app.get("/api/statistics/social", async (req, res) => {
-  const data = await getCoingeckoMarketCapStats();
-
-  res.send(data);
-});
-
-app.get("/api/statistics/2miners", async (req, res) => {
-  const data = await get2MinersStats();
-
-  res.send(data);
-});
-
 app.get("/api/known-accounts", async (req, res) => {
   const knownAccounts = await getKnownAccounts();
 
@@ -263,50 +246,6 @@ app.get("/api/participants", async (req, res) => {
   }
 
   res.send(data);
-});
-
-app.get("/api/nanoquakejs/scores", async (req, res) => {
-  let json = {};
-  try {
-    const res = await fetch("https://rainstorm.city/nanoquake/scores");
-    json = await res.json();
-  } catch (err) {
-    Sentry.captureException(err);
-  }
-
-  res.send(json);
-});
-
-app.post("/api/nanoquakejs/register", async (req, res, next) => {
-  try {
-    const response = await fetch("https://rainstorm.city/nanoquake/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(req.body),
-    });
-    const json = await response.json();
-    res.send(json);
-  } catch (err) {
-    next(err);
-  }
-});
-
-app.get("/api/nanobrowserquest/players", async (req, res, next) => {
-  try {
-    res.send(nodeCache.get(NANOBROWSERQUEST_PLAYERS) || {});
-  } catch (err) {
-    next(err);
-  }
-});
-
-app.get("/api/nanobrowserquest/leaderboard", async (req, res, next) => {
-  try {
-    res.send(nodeCache.get(NANOBROWSERQUEST_LEADERBOARD) || []);
-  } catch (err) {
-    next(err);
-  }
 });
 
 app.get("/api/nanoticker", async (req, res) => {

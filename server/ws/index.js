@@ -10,6 +10,7 @@ const {
   TOTAL_VOLUME_COLLECTION,
   LARGE_TRANSACTIONS,
   CONFIRMATIONS_PER_SECOND,
+  WS_DOMAIN_URL,
 } = require("../constants");
 
 const UPDATE_CACHE_INTERVAL = 10000;
@@ -36,7 +37,7 @@ let accumulatedVolume = 0;
 let accumulatedLargeTransactionHashes = [];
 
 // https://github.com/cryptocode/nano-websocket-sample-nodejs/blob/master/index.js
-const ws = new ReconnectingWebSocket("wss://www.nanolooker.com/ws", [], {
+const ws = new ReconnectingWebSocket(WS_DOMAIN_URL, [], {
   WebSocket: WS,
   connectionTimeout: 10000,
   maxRetries: 100000,

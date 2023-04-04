@@ -7,6 +7,16 @@ body .theme-dark {
   color: #e1e1e1;
 }
 
+body .theme-light .ant-layout-header .ant-col-order-1 a
+{
+	color: #d0ae01 !important;
+}
+body .ant-layout-header .ant-col-order-1 a
+{
+	color: #fee66a;
+	font-size: 20px;
+}
+
 .theme-dark .color-important {
   color: #fff !important;
 }

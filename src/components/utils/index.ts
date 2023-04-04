@@ -42,14 +42,14 @@ export const refreshActionDelay = async (action: Function) => {
   await sleep(actionTime > MIN_ACTION_TIME ? 0 : MIN_ACTION_TIME - actionTime);
 };
 
-export const rawToRai = (raw: string | number): number => {
+export const rawToAdia = (raw: string | number): number => {
   const value = new BigNumber(raw.toString());
-  return value.shiftedBy(30 * -1).toNumber();
+  return value.shiftedBy(34 * -1).toNumber();
 };
 
-export const raiToRaw = (rai: string | number): number => {
+export const adiaToRaw = (rai: string | number): number => {
   const value = new BigNumber(rai.toString());
-  return value.shiftedBy(30).toNumber();
+  return value.shiftedBy(34).toNumber();
 };
 
 export const secondsToTime = (value: string | number): string => {
@@ -80,7 +80,7 @@ export const formatPublicAddress = (address: string): string => {
 };
 
 // 02LV are not present in addresses
-export const ACCOUNT_REGEX = /((nano|xrb)_)?[13][13-9a-km-uw-z]{59}/;
+export const ACCOUNT_REGEX = /((adia|paw)_)?[13][13-9a-km-uw-z]{59}/;
 export const BLOCK_REGEX = /[0-9A-F]{64}/;
 
 export const isValidAccountAddress = (address: string): boolean =>
@@ -102,9 +102,9 @@ export const getAccountAddressFromText = (text: string): string | null => {
 export const getPrefixedAccount = (address: string) => {
   let account = address.toLowerCase();
   if (!address.includes("_")) {
-    account = `nano_${address}`;
-  } else if (address.startsWith("xrb_")) {
-    account = address.replace("xrb_", "nano_");
+    account = `aida_${address}`;
+  } else if (address.startsWith("paw_")) {
+    account = address.replace("paw_", "adia_");
   }
   return account;
 };

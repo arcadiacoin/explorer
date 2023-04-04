@@ -1,8 +1,8 @@
 const BigNumber = require("bignumber.js");
-const { rawToRai } = require("../../utils");
+const { rawToAdia } = require("../../utils");
 
 const confirmationQuorumTransformer = confirmationQuorum => {
-  const minWeight = rawToRai(
+  const minWeight = rawToAdia(
     new BigNumber(confirmationQuorum.online_stake_total)
       .times(0.001)
       .toNumber(),

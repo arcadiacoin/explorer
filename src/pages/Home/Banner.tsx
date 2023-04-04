@@ -21,7 +21,7 @@ const Banner: React.FC = () => {
         alignItems: "center",
         flexDirection: "column",
         margin: "-12px -12px 12px -12px",
-        backgroundColor: theme === Theme.DARK ? "#121212" : "#4A90E2",
+        background: "linear-gradient(45deg, #cd8f1d 0%, #faf555 100%)",
         padding: "40px 0",
       }}
     >
@@ -36,9 +36,9 @@ const Banner: React.FC = () => {
         }}
       >
         <img
-          alt="Nano block explorer"
+          alt="Arcadia block explorer"
           height="24px"
-          src={`/nano-${theme === Theme.DARK ? "dark" : "light"}.png`}
+          src={`/arcadia-${theme === Theme.DARK ? "dark" : "light"}.png`}
           style={{ marginRight: "12px" }}
         />
         <Title
@@ -60,10 +60,8 @@ const Banner: React.FC = () => {
         <Search isHome />
       </div>
 
+	  {/*
       <Space size={[6, 12]} wrap style={{ justifyContent: "center" }}>
-        {/* <Link to={"/what-is-nano"}>
-          <Button ghost>{t("menu.whatIsNano")}</Button>
-        </Link> */}
 
         <Button
           ghost
@@ -107,51 +105,7 @@ const Banner: React.FC = () => {
             </Text>
           </div>
         </Button>
-
-        <Link to={"/nanobrowserquest"}>
-          <Button
-            ghost
-            style={{ padding: "0 10px" }}
-            onClick={() => {
-              Tracker.ga4?.gtag("event", "NanoBrowserQuest");
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img
-                alt="Go to NanoBrowserQuest"
-                src={`/nanobrowserquest.png`}
-                height="16px"
-                style={{ marginRight: "6px" }}
-              />
-              NanoBrowserQuest
-            </div>
-          </Button>
-        </Link>
-
-        <Link to={"/nanoquakejs"}>
-          <Button ghost>
-            <img
-              alt="NanoQuakeJS"
-              src={`/nanoquakejs/quake3-white.svg`}
-              style={{
-                height: "50px",
-                margin: "-20px -6px -30px -20px",
-              }}
-            />{" "}
-            NanoQuakeJS
-          </Button>
-        </Link>
-
-        {/* <Button
-          ghost
-          href="https://bananolooker.com"
-          onClick={() => {
-            Tracker.ga4?.gtag("event", "GoToBananoLooker");
-          }}
-        >
-          <img alt="Go to BananoLooker" src={`/banano.svg`} height="12px" />
-        </Button> */}
-      </Space>
+</Space> */ }
     </div>
   );
 };

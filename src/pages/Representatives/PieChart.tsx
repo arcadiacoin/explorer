@@ -88,7 +88,7 @@ const Representatives: React.FC<Props> = ({
       return;
 
     const aliasSeparator = "|||";
-    // const stake = new BigNumber(rawToRai(onlineStakeTotal)).toNumber();
+    // const stake = new BigNumber(rawToAdia(onlineStakeTotal)).toNumber();
 
     let filteredRepresentatives = isIncludeOfflineRepresentatives
       ? [...principalRepresentatives]
@@ -102,7 +102,7 @@ const Representatives: React.FC<Props> = ({
     if (isGroupedByEntities && delegatedEntities.length) {
       // @TODO find a more scalable option
       const groups: { [key: string]: number } = {
-        "Nano Foundation": 0,
+        "Arcadia Foundation": 0,
         Binance: 0,
         Kraken: 0,
         Huobi: 0,

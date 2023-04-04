@@ -8,7 +8,7 @@ import orderBy from "lodash/orderBy";
 import { Theme, PreferencesContext } from "api/contexts/Preferences";
 import { ConfirmationQuorumContext } from "api/contexts/ConfirmationQuorum";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai } from "components/utils";
+import { rawToAdia } from "components/utils";
 
 const { Title } = Typography;
 
@@ -95,7 +95,7 @@ const Representatives: React.FC<Props> = ({ versions }) => {
         }) => ({
           name: version,
           value: isVersionByWeight
-            ? `Ӿ ${new BigNumber(weight).toFormat(2)} - ${new BigNumber(weight)
+            ? `⍲ ${new BigNumber(weight).toFormat(2)} - ${new BigNumber(weight)
                 .times(100)
                 .dividedBy(totalWeight)
                 .toFormat(2)}%`
@@ -138,7 +138,7 @@ const Representatives: React.FC<Props> = ({ versions }) => {
               placement="right"
               title={t("tooltips.versionsByWeight", {
                 onlineWeightMinimum: new BigNumber(
-                  rawToRai(onlineWeightMinimum),
+                  rawToAdia(onlineWeightMinimum),
                 ).toFormat(),
                 onlineWeightQuorumPercent,
               })}

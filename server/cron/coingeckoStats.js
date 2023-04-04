@@ -86,7 +86,7 @@ const getMarketStats = async fiats => {
     for (let i = 0; i < fiats.length; i++) {
       const fiat = fiats[i];
       res = await fetch(
-        "https://api.coingecko.com/api/v3/coins/nano?localization=false&tickers=false&market_data=true&community_data=true&developer_data=true&sparkline=true",
+        "https://api.coingecko.com/api/v3/coins/paw?localization=false&tickers=false&market_data=true&community_data=true&developer_data=true&sparkline=true",
       );
 
       const {
@@ -101,6 +101,7 @@ const getMarketStats = async fiats => {
           circulating_supply: circulatingSupply,
         },
       } = await res.json();
+	  
 
       const marketStats = {
         marketCapRank,
@@ -112,6 +113,10 @@ const getMarketStats = async fiats => {
         currentPrice,
         change24h,
       };
+
+	  marketStats.currentPrice = marketStats.currentPrice * 10000000;
+	  marketStats.circulatingSupply = marketStats.circulatingSupply / 10000000;
+	  marketStats.totalSupply = marketStats.totalSupply / 10000000;
 
       nodeCache.set(`${COINGECKO_MARKET_STATS}-${fiat}`, marketStats);
     }
@@ -126,7 +131,7 @@ const getMarketCapStats = async () => {
   await mkdir(LOGO_PATH, { recursive: true });
 
   const ids = [];
-  const top = process.env.NODE_ENV === "production" ? 200 : 10;
+  const top = process.env.NODE_ENV === "production" ? 5 : 1;
 
   try {
     let res = await fetch(
@@ -137,8 +142,8 @@ const getMarketCapStats = async () => {
 
     if (cryptocurrencies.length) {
       // If nano is excluded from the top X, still include it to be requested
-      if (!cryptocurrencies.find(({ id }) => id === "nano")) {
-        cryptocurrencies.push({ id: "nano", symbol: "xno", name: "Nano" });
+      if (!cryptocurrencies.find(({ id }) => id === "adia")) {
+        cryptocurrencies.push({ id: "paw", symbol: "paw", name: "Arcadia" });
       }
 
       for (let i = 0; i < cryptocurrencies.length; i++) {

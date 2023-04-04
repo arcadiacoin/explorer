@@ -5,8 +5,6 @@ import { Button, Modal, Typography } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Copy from "components/Copy";
 import { DONATION_ACCOUNT } from "components/AppFooter";
-import { NANOQUAKEJS_DONATION_ACCOUNT } from "pages/NanoQuakeJS/Register";
-import { NANOBROWSERQUEST_DONATION_ACCOUNT } from "pages/NanoBrowserQuest/Register";
 import QRCode from ".";
 
 import type { PageParams } from "types/page";
@@ -51,11 +49,7 @@ const QRCodeModal = ({ header, account, children }: QRCodeModalProps) => {
         </div>
         <>
           {(account === DONATION_ACCOUNT &&
-            accountParam !== DONATION_ACCOUNT) ||
-          [
-            NANOBROWSERQUEST_DONATION_ACCOUNT,
-            NANOQUAKEJS_DONATION_ACCOUNT,
-          ].includes(account) ? (
+            accountParam !== DONATION_ACCOUNT) ? (
             <div
               style={{
                 display: "flex",

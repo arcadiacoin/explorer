@@ -21,7 +21,7 @@ const Price = () => {
   };
 
   const defaultCryptocurrency = SupportedCryptocurrency.find(
-    ({ symbol }) => symbol === "nano",
+    ({ symbol }) => symbol === "adia",
   ) as CryptocurrencyPriceProps;
 
   return (
@@ -101,7 +101,7 @@ const CryptocurrencyPrice = ({
         isPercent
         suffix={
           <>
-            {(symbol === "nano" || symbol === "xno") && price24hChange >= 25
+            {(symbol === "adia" || symbol === "paw") && price24hChange >= 25
               ? "🥦"
               : null}
             {symbol === "ban" && price24hChange >= 25 ? "🍌" : null}

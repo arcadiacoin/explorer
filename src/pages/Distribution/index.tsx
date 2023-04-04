@@ -23,15 +23,16 @@ const { Text, Title } = Typography;
 // All have been distributed, notes on distribution process...
 
 const distributionMap = [
-  "0.001 - <1",
+  "0.0000001 - <0.000001",
+  "0.000001 - <0.00001",
+  "0.00001 - <0.0001",
+  "0.0001 - <0.001",
+  "0.01 - <0.1",
+  "0.1 - <1",
   "1 - <10",
   "10 - <100",
   "100 - <1K",
-  "1K - <10K",
-  "10K - <100K",
-  "100K - <1M",
-  "1M - <10M",
-  "10M - <100M",
+  "1K >",
 ];
 
 let distributionChart: any = null;
@@ -70,7 +71,7 @@ const Distribution: React.FC = () => {
     let knownExchangeDistribution: DistributionIndex[] = [];
     if (!isIncludeExchanges) {
       Object.values(data.knownExchanges).forEach(balance => {
-        let index = balance >= 1 ? `${Math.floor(balance)}`.length : 0;
+        let index = balance >= 0.0001 ? `${Math.floor(balance)}`.length : 0;
 
         knownExchangeDistribution[index] = {
           accounts: (knownExchangeDistribution[index]?.accounts || 0) + 1,
@@ -200,7 +201,7 @@ const Distribution: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Nano {t("menu.distribution")}</title>
+        <title>Arcadia {t("menu.distribution")}</title>
       </Helmet>
       <Title level={3}>{t("pages.distribution.title")}</Title>
       <Card size="small">

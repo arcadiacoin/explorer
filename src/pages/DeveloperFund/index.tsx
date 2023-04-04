@@ -18,14 +18,13 @@ import useAvailableSupply from "api/hooks/use-available-supply";
 import useDeveloperAccountFund from "api/hooks/use-developer-fund-transactions";
 import QuestionCircle from "components/QuestionCircle";
 import LoadingStatistic from "components/LoadingStatistic";
-import { rawToRai, timestampToDate } from "components/utils";
+import { rawToAdia, timestampToDate } from "components/utils";
 import KnownAccounts from "../../knownAccounts.json";
 
 const {
   GENESIS_ACCOUNT,
   DEVELOPER_FUND_ACCOUNTS,
   ORIGINAL_DEVELOPER_FUND_BLOCK,
-  ORIGINAL_DEVELOPER_FUND_BURN_BLOCK,
   ORIGINAL_DEVELOPER_FUND_ACCOUNT,
 } = KnownAccounts;
 
@@ -54,8 +53,8 @@ const DeveloperFund: React.FC = () => {
     Object.entries(accountsBalances?.balances || []).reduce(
       // @ts-ignore
       (accounts, [account, { balance, pending }]) => {
-        const calculatedBalance = new BigNumber(rawToRai(balance || 0))
-          .plus(rawToRai(pending || 0))
+        const calculatedBalance = new BigNumber(rawToAdia(balance || 0))
+          .plus(rawToAdia(pending || 0))
           .toNumber();
 
         totalBalance = new BigNumber(totalBalance)
@@ -98,183 +97,13 @@ const DeveloperFund: React.FC = () => {
     hash: lastTransactionHash,
   } = developerFundTransactions?.[0] || {};
   const modifiedTimestamp = Number(local_timestamp) * 1000;
-  const lastTransactionAmount = new BigNumber(rawToRai(amount || 0)).toNumber();
+  const lastTransactionAmount = new BigNumber(rawToAdia(amount || 0)).toNumber();
 
   return (
     <>
       <Helmet>
-        <title>Nano {t("menu.developerFund")}</title>
+        <title>Arcadia {t("menu.developerFund")}</title>
       </Helmet>
-      <Row gutter={[12, 0]}>
-        <Col xs={24} lg={12}>
-          <Title level={3}>{t("menu.developerFund")}</Title>
-          <Card size="small" bordered={false} className="detail-layout">
-            <div
-              className="divider"
-              style={{
-                paddingBottom: "6px",
-                marginBottom: "12px",
-              }}
-            >
-              {t("pages.developerFund.description", {
-                totalAccounts: data.length,
-              })}
-              <br />
-              <a
-                style={{
-                  display: "inline-block",
-                  marginTop: "12px",
-                }}
-                href={DEVELOPER_FUND_CHANGE_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("common.continueReading")}
-              </a>
-            </div>
-
-            <Row gutter={6}>
-              <Col xs={24} sm={6}>
-                {t("common.totalBalance")}
-              </Col>
-              <Col xs={24} sm={18}>
-                <LoadingStatistic
-                  isLoading={skeletonProps.loading}
-                  prefix="Ӿ"
-                  value={totalBalance}
-                />
-                <Skeleton {...skeletonProps}>
-                  {`${CurrencySymbol?.[fiat]} ${fiatBalance}${
-                    btcBalance ? ` / ${btcBalance} BTC` : ""
-                  } `}
-                </Skeleton>
-              </Col>
-            </Row>
-
-            <Row gutter={6}>
-              <Col xs={24} sm={6}>
-                {t("pages.developerFund.lastTransaction")}
-                <Tooltip
-                  placement="right"
-                  title={t("tooltips.lastTransaction", {
-                    totalAccounts: data.length,
-                  })}
-                >
-                  <QuestionCircle />
-                </Tooltip>
-              </Col>
-              <Col xs={24} sm={18}>
-                <Skeleton active loading={!modifiedTimestamp} paragraph={false}>
-                  <TimeAgo datetime={modifiedTimestamp} live={false} /> (
-                  {timestampToDate(modifiedTimestamp)})
-                  <br />
-                </Skeleton>
-                <Skeleton
-                  active
-                  loading={!lastTransactionAmount}
-                  paragraph={false}
-                >
-                  Ӿ {lastTransactionAmount}
-                  <br />
-                </Skeleton>
-                <Skeleton
-                  active
-                  loading={!lastTransactionHash}
-                  paragraph={false}
-                >
-                  <Link
-                    to={`/block/${lastTransactionHash}`}
-                    className="break-word"
-                  >
-                    {lastTransactionHash}
-                  </Link>
-                  <br />
-                </Skeleton>
-                <Link to={`/developer-fund/transactions`}>
-                  <Button
-                    type="primary"
-                    size="small"
-                    style={{ marginTop: "6px" }}
-                  >
-                    {t("pages.developerFund.allTransactions")}
-                  </Button>
-                </Link>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col xs={24} lg={12}>
-          <Title level={3}>
-            {t("pages.developerFund.originalDeveloperFund")}
-          </Title>
-          <Card size="small" bordered={false} className="detail-layout">
-            <div
-              className="divider"
-              style={{
-                paddingBottom: "6px",
-                marginBottom: "12px",
-              }}
-            >
-              <Trans i18nKey="pages.developerFund.originalDeveloperFundDescription">
-                <Link to={`/account/${GENESIS_ACCOUNT}`}>Genesis</Link>
-                <Link
-                  to={`/block/${ORIGINAL_DEVELOPER_FUND_BURN_BLOCK}`}
-                ></Link>
-              </Trans>
-              <br />
-              <a
-                style={{ display: "inline-block", marginTop: "12px" }}
-                href={DEVELOPER_FUND_ORIGINAL_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("common.continueReading")}
-              </a>
-            </div>
-
-            <Row gutter={6}>
-              <Col xs={24} sm={6}>
-                {t("common.account")}
-              </Col>
-              <Col xs={24} sm={18}>
-                <Link
-                  to={`/account/${ORIGINAL_DEVELOPER_FUND_ACCOUNT}`}
-                  className="break-word"
-                >
-                  {ORIGINAL_DEVELOPER_FUND_ACCOUNT}
-                </Link>
-              </Col>
-            </Row>
-            <Row gutter={6}>
-              <Col xs={24} sm={6}>
-                {t("common.balance")}
-              </Col>
-              <Col xs={24} sm={18}>
-                Ӿ {new BigNumber("7000000").toFormat()}
-                <br />
-                {t("pages.developerFund.percentOfTotal", {
-                  percent: new BigNumber(7000000 * 100)
-                    .dividedBy(availableSupply)
-                    .toFormat(2),
-                })}
-              </Col>
-            </Row>
-            <Row gutter={6}>
-              <Col xs={24} sm={6}>
-                {t("common.block")}
-              </Col>
-              <Col xs={24} sm={18}>
-                <Link
-                  to={`/block/${ORIGINAL_DEVELOPER_FUND_BLOCK}`}
-                  className="break-word"
-                >
-                  {ORIGINAL_DEVELOPER_FUND_BLOCK}
-                </Link>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-      </Row>
 
       <Title level={3}>
         {t("pages.developerFund.totalAccounts", { totalAccounts: data.length })}
@@ -307,7 +136,7 @@ const DeveloperFund: React.FC = () => {
                   display: "block",
                 }}
               >
-                Ӿ {balance}
+                ⍲ {balance}
               </span>
             </Col>
             <Col sm={14} md={14} xl={18}>

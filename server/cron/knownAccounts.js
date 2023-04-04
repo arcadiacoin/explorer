@@ -3,27 +3,28 @@ const cron = require("node-cron");
 const uniqBy = require("lodash/uniqBy");
 const BigNumber = require("bignumber.js");
 const { doDelegatedEntitiesCron } = require("./delegatedEntity");
-const { rawToRai } = require("../utils");
+const { rawToAdia } = require("../utils");
 const { rpc } = require("../rpc");
 const { nodeCache } = require("../client/cache");
 const { Sentry } = require("../sentry");
 const {
   KNOWN_ACCOUNTS,
   KNOWN_ACCOUNTS_BALANCE,
-  EXPIRE_48H,
+  EXPIRE_48H
 } = require("../constants");
 const extraKnownAccounts = require("./knownAccounts.json");
-const faucetAccounts = require("../../src/pages/Faucets/faucets.json");
 
 const doKnownAccountsCron = async () => {
   let knownAccounts = [];
   try {
-    const res = await fetch("https://mynano.ninja/api/accounts/aliases");
+    const res = await fetch("https://arcnodes.arcadiacoin.net/api/accounts/aliases");
     knownAccounts = (await res.json()) || [];
+
+	const jsonString = JSON.stringify(knownAccounts).replace(/paw_/g, "adia_");
+	knownAccounts = JSON.parse(jsonString);
 
     // Merge knownAccounts.json list
     knownAccounts = uniqBy(knownAccounts.concat(extraKnownAccounts), "account");
-    knownAccounts = uniqBy(knownAccounts.concat(faucetAccounts), "account");
 
     nodeCache.set(KNOWN_ACCOUNTS, knownAccounts);
   } catch (err) {
@@ -64,13 +65,13 @@ const doKnownAccountsBalanceCron = async () => {
             account,
             alias,
             balance: balances[account]
-              ? rawToRai(new BigNumber(balances[account].balance || 0))
+              ? rawToAdia(new BigNumber(balances[account].balance || 0))
               : 0,
             pending: balances[account]
-              ? rawToRai(new BigNumber(balances[account].pending || 0))
+              ? rawToAdia(new BigNumber(balances[account].pending || 0))
               : 0,
             total: balances[account]
-              ? rawToRai(
+              ? rawToAdia(
                   new BigNumber(balances[account].balance || 0).plus(
                     balances[account].pending || 0,
                   ),

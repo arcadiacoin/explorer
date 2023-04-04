@@ -1,16 +1,4 @@
-# NanoLooker
-
-![image](https://user-images.githubusercontent.com/19352322/115473119-212dff00-a209-11eb-922c-ba37838318f6.png)
-
-## What is Nano?
-
-The goal of Nano is to create an efficient cryptocurrency, one that could be used for daily payments, by anyone in the world, without the emissions that come with Bitcoin.
-Nano makes money efficient for a more equal world — simple to pay with, easy to accept and open to all.
-
-- Nano is a fee-less cryptocurrency, making it practical and inclusive for everyone in the world.
-- Without relying on mining, printing or minting, Nano is sustainable digital money.
-- Every Nano is distributed, making it a deflationary currency.
-- Instant and secure, a transaction is fully confirmed on the network under 1 second.
+# Arcadia Explorer
 
 ## Install
 
@@ -73,15 +61,8 @@ If you think some strings should be corrected open a PR with the corrections on 
 - run `npm run translate -- --language=LANGUAGE_CODE` where `LANGUAGE_CODE` is `ru`, `fr`, `es` or any new language supported by Google's API.
 - run `npm run translate` to generate for all languages found in the `src/i18n/locale` from `en.json`
 
-## Special thanks
-
-### Donators
-
-Thanks for financially contributing to NanoLooker hosting and development.
-
 ### Projects
 
-A few projects from the Nano community were really helpful for building NanoLooker
-
+- [NanoLooker](https://github.com/running-coder/nanolooker)
 - [My Nano Ninja](https://mynano.ninja/)
 - [NanoCrawler](https://nanocrawler.cc/)
