@@ -25,7 +25,7 @@ const getNodeLocations = async () => {
               $query: {},
             })
             .toArray((_err, values = []) => {
-              nodeCache.set(NODE_LOCATIONS, values);
+              //nodeCache.set(NODE_LOCATIONS, values);
               client.close();
               resolve(values);
             });

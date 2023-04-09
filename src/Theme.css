@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #ff0000;
+}
+
 .theme-light *,
 .theme-dark * {
   transition: background-color 0s !important;
@@ -7,15 +11,17 @@ body .theme-dark {
   color: #e1e1e1;
 }
 
-body .theme-light .ant-layout-header .ant-col-order-1 a
-{
-	color: #d0ae01 !important;
-}
 body .ant-layout-header .ant-col-order-1 a
 {
-	color: #fee66a;
+	color: #d0ae01;
 	font-size: 20px;
 }
+body .theme-dark .ant-layout-header .ant-col-order-1 a
+{
+	color: #fee66a !important;
+}
+
+
 
 .theme-dark .color-important {
   color: #fff !important;
@@ -32,8 +38,8 @@ body .ant-layout-header .ant-col-order-1 a
 
 .theme-dark .app-sub-header {
   color: #e1e1e1;
-  background: #1e1e1e;
-  border-color: #1e1e1e;
+  background: #252525;
+  border-color: #252525;
 }
 
 .theme-dark .ant-typography {
@@ -48,23 +54,30 @@ body .ant-layout-header .ant-col-order-1 a
     0 6px 16px 0 rgba(0, 0, 0, 0.32), 0 9px 28px 8px rgba(0, 0, 0, 0.2);
   -webkit-transform: translate3d(0, 0, 0);
 }
-
-.ant-menu-light {
+.app-header
+{
   background: #fff;
+}
+.theme-dark .app-header
+{
+  background: none !important;
+}
+.ant-menu-light {
+  background: none;
 }
 
 .theme-dark .ant-layout-header {
-  background: #121212;
+  background: #1e1e1e;
 }
 
 .theme-dark .ant-menu {
   color: #e1e1e1;
-  background: #121212;
+  background: #1e1e1e;
 }
 
 .theme-dark .ant-menu.ant-menu-sub {
   /* color: #e1e1e1; */
-  background: #1e1e1e !important;
+  background: #252525 !important;
 }
 
 .theme-dark .ant-input {
@@ -76,8 +89,8 @@ body .ant-layout-header .ant-col-order-1 a
 }
 
 .theme-dark .ant-input-search {
-  background-color: #1e1e1e;
-  border-color: #1e1e1e;
+  background-color: #252525;
+  border-color: #252525;
 }
 
 .theme-dark .ant-dropdown-menu,
@@ -122,16 +135,16 @@ body .ant-layout-header .ant-col-order-1 a
 }
 
 .theme-dark.ant-layout {
-  background-color: #121212;
+  background-color: #1e1e1e;
 }
 
 .theme-dark .ant-card {
-  background: #1e1e1e;
+  background: #252525;
 }
 
 .theme-dark .ant-card-head {
   color: #e1e1e1;
-  border-color: #1e1e1e;
+  border-color: #252525;
 }
 
 .theme-dark .ant-card-extra {
@@ -139,7 +152,7 @@ body .ant-layout-header .ant-col-order-1 a
 }
 
 .theme-dark .ant-card.ant-card-bordered {
-  border-color: #1e1e1e;
+  border-color: #252525;
 }
 
 .theme-dark .ant-statistic-title {
@@ -155,7 +168,7 @@ body .ant-layout-header .ant-col-order-1 a
 }
 
 .theme-dark .ant-layout-footer {
-  background: #121212;
+  background: #1e1e1e;
   color: #e1e1e1;
 }
 
@@ -174,14 +187,14 @@ body .ant-layout-header .ant-col-order-1 a
 
 .theme-dark .ant-table thead > tr > th {
   color: #e1e1e1;
-  background: #1e1e1e !important;
-  border-color: #1e1e1e;
+  background: #252525 !important;
+  border-color: #252525;
 }
 
 .theme-dark .ant-table .ant-table-cell {
   color: #e1e1e1;
-  background: #1e1e1e !important;
-  border-color: #1e1e1e;
+  background: #252525 !important;
+  border-color: #252525;
 }
 
 /* Wait until className works on popover and dropdown */
@@ -193,11 +206,11 @@ body .ant-layout-header .ant-col-order-1 a
   .ant-table-tbody
   > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected)
   > td {
-  background: #1e1e1e !important;
+  background: #252525 !important;
 }
 
 .theme-dark .ant-table-footer {
-  background: #1e1e1e !important;
+  background: #252525 !important;
 }
 
 .theme-dark .ant-pagination-item-active {
@@ -282,7 +295,7 @@ body .ant-layout-header .ant-col-order-1 a
 }
 
 .theme-dark .bottom-gradient {
-  background: linear-gradient(transparent, #1e1e1e);
+  background: linear-gradient(transparent, #252525);
 }
 
 .theme-dark .detail-layout .ant-row + .ant-row {

@@ -109,7 +109,7 @@ export const getFilterTransactionsRange = (): [number, number] => {
 };
 
 export const PreferencesContext = React.createContext<Preferences>({
-  theme: Theme.LIGHT,
+  theme: Theme.DARK,
   cryptocurrency: [],
   fiat: Fiat.USD,
   filterTransactions: false,
@@ -133,7 +133,7 @@ export const PreferencesContext = React.createContext<Preferences>({
 
 const Provider: React.FC = ({ children }) => {
   const [theme, setTheme] = React.useState<Theme>(
-    (localStorage.getItem(LOCALSTORAGE_KEYS.THEME) as Theme) || Theme.LIGHT,
+    (localStorage.getItem(LOCALSTORAGE_KEYS.THEME) as Theme) || Theme.DARK,
   );
   const [cryptocurrency, setCryptocurrency] = React.useState<string[]>(
     getCryptocurrency(),

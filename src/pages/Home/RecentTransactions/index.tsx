@@ -33,8 +33,7 @@ const RecentTransactions: React.FC = () => {
         className="sticky"
         style={{
           paddingBottom: "6px",
-          zIndex: 1,
-          background: theme === Theme.DARK ? "#1e1e1e" : "#fff",
+          zIndex: 1
         }}
       >
         <ConfirmationsPerSecond />

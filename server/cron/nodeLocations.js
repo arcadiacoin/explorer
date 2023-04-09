@@ -60,8 +60,13 @@ const connect = async () =>
 
 const getNodeLocation = async ip => {
   try {
+	  
+	let url = `https://ipapi.co/${ip}/json/`;
+	if(process.env.IPAPI_KEY)
+		url = `https://ipapi.co/${ip}/json/?key=${process.env.IPAPI_KEY}`
+	
     const res = await fetch(
-      `https://ipapi.co/${ip}/json/?key=${process.env.IPAPI_KEY}`,
+     url, {"headers" : {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0"}}
     );
     const {
       version,
@@ -103,6 +108,7 @@ const getNodeLocation = async ip => {
   return {};
 };
 
+const delay = ms => new Promise(res => setTimeout(res, ms));
 const doNodeLocations = async () => {
   console.log("Starting doNodeLocations");
 
@@ -115,7 +121,8 @@ const doNodeLocations = async () => {
     for (let i = 0; i < peersChunks.length; i++) {
       console.log(`Processing node location ${i + 1} of ${peersChunks.length}`);
       const locationResults = await Promise.all(
-        peersChunks[i].map(async ({ ip, ...rest }) => {
+        peersChunks[i].map(async ({ ip, ...rest }, index) => {
+		  await delay(index * 2000);
           const location = await getNodeLocation(ip);
 
           return {
@@ -147,8 +154,9 @@ const doNodeLocations = async () => {
 
 // https://crontab.guru/#00_01,13_*_*_*
 // At minute 0 past hour 1 and 13.”
-cron.schedule("00 01,13 * * *", () => {
+cron.schedule("0 0 * * *", () => {
   if (process.env.NODE_ENV !== "production") return;
 
   doNodeLocations();
 });
+doNodeLocations();

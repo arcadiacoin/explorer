@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { Helmet } from "react-helmet";
 import { Route, Switch } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, ConfigProvider, theme } from "antd";
 import { PreferencesContext, Theme } from "api/contexts/Preferences";
 import NodeHealth from "components/NodeHealth";
 import Notification from "components/Notification";
@@ -25,7 +25,7 @@ import PreferencesPage from "pages/Preferences";
 import BookmarksPage from "pages/Bookmarks";
 import "components/utils/analytics";
 
-import "antd/dist/antd.css";
+//import "antd/dist/antd.css";
 import "leaflet/dist/leaflet.css";
 import "leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css";
 import "./App.css";
@@ -33,9 +33,10 @@ import "./Theme.css";
 
 const { Content } = Layout;
 
+
 const App: React.FC = () => {
   const { t } = useTranslation();
-  const { theme } = React.useContext(PreferencesContext);
+  const { theme:userTheme } = React.useContext(PreferencesContext);
 
   return (
     <>
@@ -48,12 +49,19 @@ const App: React.FC = () => {
         />
         <meta
           name="theme-color"
-          content={theme === Theme.DARK ? "#131313" : "#eff2f5"}
+          content={userTheme === Theme.DARK ? "#131313" : "#eff2f5"}
         />
       </Helmet>
+	  <ConfigProvider theme={{
+		  algorithm: userTheme === Theme.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm ,
+		  token: {
+			colorPrimary: '#cd8f1d',
+		  },
+		}}
+      >
       <Layout
         style={{ minHeight: "100vh" }}
-        className={theme ? `theme-${theme}` : undefined}
+        className={userTheme === Theme.DARK ? `theme-dark` : undefined}
       >
         <NodeHealth />
         <AppHeader />
@@ -87,6 +95,7 @@ const App: React.FC = () => {
         </Content>
         <AppFooter />
       </Layout>
+	  </ConfigProvider>
     </>
   );
 };

@@ -34,7 +34,7 @@ const AppHeader: React.FC = () => {
           paddingTop: "6px",
           position: "relative",
           width: "100%",
-          height: "auto",
+          height: "auto"
         }}
       >
         <Row style={{ alignItems: "center" }}>
