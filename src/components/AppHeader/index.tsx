@@ -71,10 +71,6 @@ const AppHeader: React.FC = () => {
                   {t("menu.representatives")}
                   <Link to="/representatives" />
                 </Menu.Item>
-                <Menu.Item key="developer-fund">
-                  {t("menu.developerFund")}
-                  <Link to="/developer-fund" />
-                </Menu.Item>
                 <Menu.Item key="known-accounts">
                   {t("menu.knownAccounts")}
                   <Link to="/known-accounts" />

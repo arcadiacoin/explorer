@@ -165,7 +165,7 @@ const useSocket = ({ account }: { account?: string }) => {
     isForcedClosed = false;
     setIsConnected(false);
 
-    ws = new WebSocket(websocketDomain || "wss://ws3.arcadiacoin.net");
+    ws = new WebSocket(websocketDomain || "wss://ws.arcadiacoin.net");
 
     ws.onopen = () => {
       clearInterval(pingInterval);

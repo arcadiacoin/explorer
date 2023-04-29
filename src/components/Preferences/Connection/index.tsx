@@ -126,7 +126,7 @@ const ConnectionPreferences: React.FC<Props> = ({ isDetailed }) => {
                           {...field}
                           type="text"
                           style={{ width: "400px", maxWidth: "100%" }}
-                          placeholder={`wss://ws3.arcadiacoin.net`}
+                          placeholder={`wss://ws.arcadiacoin.net`}
                           maxLength={255}
                           suffix={
                             getValues("websocketDomain") &&

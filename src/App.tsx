@@ -70,11 +70,6 @@ const App: React.FC = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/representatives" component={RepresentativesPage} />
-            <Route exact path="/developer-fund" component={DeveloperFundPage} />
-            <Route
-              path="/developer-fund/transactions"
-              component={DeveloperFundTransactionsPage}
-            />
             <Route path="/known-accounts" component={KnownAccountsPage} />
             <Route path="/distribution" component={DistributionPage} />
             <Route path="/exchange-tracker" component={ExchangeTrackerPage} />

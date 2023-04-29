@@ -159,4 +159,3 @@ cron.schedule("0 0 * * *", () => {
 
   doNodeLocations();
 });
-doNodeLocations();
